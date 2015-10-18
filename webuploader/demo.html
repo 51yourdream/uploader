@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/webuploader.css">
+	<script src="./js/jquery-2.1.4.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/webuploader.js"></script>
+	<title>WebUploader 学习</title>
+	<script>window.BASE_URL = "./";</script>
+</head>
+<body>
+	<div class="container">
+		<div id="uoloader" class="wu-example">
+			<!-- 用来存放文件信息 -->
+			<div id="thelist" class="uploader-list"></div>
+			<div class="btns">
+				<div id="picker">选择文件</div>
+				<button id="ctlBtn" class="btn btn-default">开始上传</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	//初始化 web Uploader
+	var uploader = WebUploader.create({
+		//swf文件路径
+		swf:BASE_URL + 'swf/Uploader.swf',
+		//文件接收服务器
+		server:BASE_URL + 'server/fileupload.php',
+		//选择文件的按钮 一般用id
+		//内部根据当前运行创建 可能是input 也可能是flash
+		pick:'#picker',
+		//不压缩image 默认如果是jpeg 文件上传前会压缩一把再上传
+		resize:false
+	});
+
+	//显示用户选择
+	//由于webuploader不处理UI逻辑，所以需要去监听fileQueued事件来实现。
+	//当有文件被添加进入队列的时候自动触发该事件
+	uploader.on('fileQueued',function(file){
+		$("#thelist").append(
+				'<div id="'+file.id+'" class="item">'+
+				'<h4 class="info">'+file.name+'</h4>'+
+				'<p class="state">等待上传.....</p>'+
+				'</div>'
+			);
+	});
+
+	//文件上传进度
+	//文件上传中 web Uploder 会对外派送 uploadProgress事件，其中包含文件对象和该文件当前上传进度
+	//文件上传过程中创建进度条实时显示
+	uploader.on('uploadProgress',function(file,percentage){
+		var $li = $('#'+file.id),$percent = $li.find('.progress .progress-bar');
+		//避免重复创建
+		if(!$percent.length){
+			$percent = $('<div class="progress progress-striped active">'+
+				'<div class="progress-bar" role="progressbar" style="width:0%">'+
+				'</div>'+
+				'</div>').appendTo().find('.progress-bar');
+		}
+		$li.find('p.state').text('上传中');
+		$percent.css('width',percentage*100+'%');
+	});
+
+	//文件成功 失败处理
+	//文件上传失败会派送uploadError事件,成功则派送 uploadSuccess事件，不管成功还是失败，在文件上传完后都会触发uploadeComplete事件
+	uploader.on('uploadSuccess',function(file){
+		$('#'+file.id).find('p.state').text('已上传');
+	});
+
+	uploader.on('uploadError',function(file){
+		$('#'+file.id).find('p.state').text('上传出错');
+	});
+
+	uploader.on('uploadComplete',function(file){
+		$('#'+file.id).find('.progress').fadeOut;
+	});
+</script>
