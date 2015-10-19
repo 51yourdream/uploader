@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <script src="./js/jquery-2.1.4.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/rotate.js"></script>
+    </head>
+    <body>
+		<div class="container">
+			<div class="alert alert-info">
+				<div><img src="./images/1.jpg" alt="" id="myimg" width="200px" height="150px"></div>
+				<p><button class="btn btn-info" onclick="rotate_left()">left</button><button class="btn btn-success" onclick="rotate_right()">right</button></p>
+			</div>
+		</div>
+    </body>
+    <script>
+    function rotate_left(){
+    	$("#myimg").rotateLeft();
+    }
+    function rotate_right(){
+    	$("#myimg").rotateRight();
+    }
+    </script>
+</html>

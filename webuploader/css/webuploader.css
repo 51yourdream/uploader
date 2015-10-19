@@ -1,6 +1,41 @@
 .webuploader-container {
 	position: relative;
 }
+#webuploader-dropzone{
+	margin:20px 0px;
+}
+.uploader-img{
+	margin:8px;
+	display:inline-block;
+	position:relative;
+	overflow: hidden;
+}
+.webuploader-list-container{
+	    border: 3px dashed #e6e6e6;
+	    color: #cccccc;
+	    font-size: 18px;
+	    min-height: 238px;
+	    padding-top: 95px;
+	    position: relative;
+	    /*text-align: center;*/
+}
+.deletebtn{
+	position:absolute;
+	top:10px;
+	right:10px;
+}
+.deletebtn:hover{color:#4169E1;cursor: pointer;}
+
+#webuploader-dropzone .webuploader-list-container #webuploader-filelist .uploader-img:hover{cursor: default;}
+.webuploader-img-news{
+	position:absolute;
+	bottom:0px;
+	overflow:hidden;
+}
+#webuploader-dropzone .webuploader-list-container #webuploader-filelist .uploader-img .webuploader-img-news p{max-height:14px;}
+
+#lpuploader .pull-right .webuploader-file-add{display:inline;margin-right:10px;}
+#webuploader-uploaderbtn{border-width: 0px; width: 86px; height: 40px; padding: 0px; margin-bottom: 30px;}
 .webuploader-element-invisible {
 	position: absolute !important;
 	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */

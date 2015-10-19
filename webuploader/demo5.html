@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/webuploader.css">
+	<script src="./js/jquery-2.1.4.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/webuploader.js"></script>
+	<script src="./js/myuploader.js"></script>
+
+	<title>WebUploader 完整demo</title>
+	<script>window.BASE_URL = "./";</script>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="lpuploader">
+			<div id="webuploader-dropzone" class="bg-info">	<!-- 拖拽区域 -->
+				<div class="webuploader-list-container">
+					<!-- 用来存放文件信息 待上传文件 和上传的文件都会放在这个容器里面-->
+					<div id="webuploader-filelist">
+						<!-- <div class="uploader-img ">
+							<img src="./images/1.jpg" alt="" width="120px" height="100px">
+							<span class="glyphicon glyphicon-remove deletebtn hidden"></span>
+							<div class="text-center webuploader-img-news" style="font-size:16px;">
+								<p>图片名称</p>
+								<p>图片上传状态</p>
+							</div>
+						</div> -->
+						<!--<div class="uploader-img ">
+							<img src="./images/1.jpg" alt="" width="120px" height="100px">
+							<span class="glyphicon glyphicon-remove deletebtn hidden"></span>
+							<div class="text-center webuploader-img-news" style="font-size:16px;">
+								<p>图片名称</p>
+								<p>图片上传状态</p>
+							</div>
+						</div>
+						<div class="uploader-img ">
+							<img src="./images/1.jpg" alt="" width="120px" height="100px">
+							<span class="glyphicon glyphicon-remove deletebtn hidden"></span>
+							<div class="text-center webuploader-img-news" style="font-size:16px;">
+								<p>图片名称</p>
+								<p>图片上传状态风文明搜搜赔偿款的山坡凤生凤隔热个人儿上</p>
+							</div>
+						</div> -->
+					</div>
+					<div id="webuploader-picker" class="text-center center-block"></div>
+				</div>
+			</div>
+			<!-- <div class="pull-right">
+				<button class="btn btn-info webuploader-file-add">添加文件</button>
+				<button class="btn btn-success" id="webuploader-uploaderbtn">开始上传</button>
+			</div> -->
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	$("#webuploader-dropzone .webuploader-list-container #webuploader-filelist .uploader-img").on('mouseover',function(){
+		$(".deletebtn",this).removeClass('hidden');
+		$(".webuploader-img-news p",this).css({color:"#292421"});
+		$(this).css({opacity:"0.8",});
+	}).on('mouseleave',function(){
+		$(".deletebtn",this).addClass('hidden');
+		$(".webuploader-img-news p",this).css({color:'#cccccc'});
+		$(this).css({opacity:"1"});
+	});
+</script>
